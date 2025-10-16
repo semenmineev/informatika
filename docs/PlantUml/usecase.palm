@@ -1,0 +1,37 @@
+@startuml
+left to right direction
+
+actor "Кассир" as Cashier
+actor "Администратор" as Admin
+actor "Товаровед" as MerchManager
+
+rectangle "Система" {
+  usecase "Продажа товаров и формирование чеков" as Sales
+  usecase "Оформление возвратов" as Returns
+  usecase "Открытие/закрытие смены" as Shift
+  usecase "Контроль над кассирами" as Control
+  usecase "Просмотр статистики по выручке" as Stats
+  usecase "Снятие отчётов" as Reports
+  usecase "Анализ продаж и остатков" as Analysis
+  usecase "Формирование заказов поставщикам" as Orders
+  usecase "Управление ассортиментом" as Assortment
+}
+
+Cashier --> Sales
+Cashier --> Returns
+Cashier --> Shift
+
+Admin --> Sales
+Admin --> Returns
+Admin --> Shift
+Admin --> Control
+Admin --> Stats
+Admin --> Reports
+Admin --> Analysis
+
+MerchManager --> Stats
+MerchManager --> Analysis
+MerchManager --> Orders
+MerchManager --> Assortment
+
+@enduml
